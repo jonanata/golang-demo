@@ -1,0 +1,50 @@
+<htmlM>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+   <script type="text/javascript" src="https://cdn.datatables.net/scroller/2.0.3/js/dataTables.scroller.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+    <body>
+        <table id="dTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Mars Temperature</th>
+                    <th>Oil Price</th>
+                </tr>
+            </thead>
+        </table> 
+
+        <p>Tomorrow Price (If Mars Temperature rise):<span id="opr"></span></p> 
+
+    <script>
+
+$(document).ready(function() { 
+
+    $.getJSON( "/getData", function( d ) {
+
+        console.log(d.tData); 
+
+        $('#dTable').DataTable( {
+            data: d.tData,
+            "columns": [
+                { "data": "Date" },
+                { "data": "Degree" },
+                { "data": "Price" }, 
+            ], 
+            deferRender:    true,
+            scrollY:        200,
+            scrollCollapse: true,
+            scroller:       true
+        } ); 
+
+        $('#opr').html(d.opr)
+
+    });
+
+    
+} );
+
+    </script>
+
+    </body>
+</html>
