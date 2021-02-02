@@ -9,6 +9,6 @@ go mod download
 ```
 
 ## Sample data 
-Mars temperature: sample/mtdata.json 
 
-Oil price: sample/opdata.json 
+Mars temperature: sample/mtdata.json  
+Oil price: sample/opdata.json  
